@@ -173,18 +173,18 @@ void createOrEditAssignment(const std::string& username) {
     }
 }
 
-int main() {
-    std::string username;
+//int main() {
+//   std::string username;
 
     // Get the user's name
-    std::cout << "Enter your name: ";
-    std::getline(std::cin, username);
+//    std::cout << "Enter your name: ";
+//    std::getline(std::cin, username);
 
     // Trim whitespace from the username
-    username = trim(username);
+//    username = trim(username);
 
     // Call the function to create or edit assignments for the user
-    createOrEditAssignment(username);
+//   createOrEditAssignment(username);
 
-    return 0;
-}
+//    return 0;
+//}
