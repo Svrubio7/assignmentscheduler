@@ -27,16 +27,4 @@ void displayAllAssignments(const vector<SchoolWork::Assignment>& assignments) {
 }
 
 
-void displaySchedule(const vector<SchoolWork::Assignment>& assignments, int maxDailyHours) { 
-    if (assignments.empty()) {
-        cout << "No assignments scheduled.\n";
-        return;
-    }
 
-    cout << "\nFinal Scheduled Assignments:\n";
-    for (const auto& assignment : assignments) {
-        cout << "Work on " << assignment.getName() << " for " 
-             << assignment.getEstimatedHours() << " hour(s). Deadline in " 
-             << assignment.getDeadline() << " days.\n";
-    }
-}
