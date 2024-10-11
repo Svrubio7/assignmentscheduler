@@ -8,25 +8,25 @@
 
 using json = nlohmann::json;
 
-// Mock data creation for the test cases
+//created a mock JSONFILE
 void createMockJSONFile(const std::string& username, const nlohmann::json& data) {
     std::ofstream file("Data/" + username + ".json");
     file << data.dump(4);
     file.close();
 }
 
-// Test loadAssignments function
+// testing the loadAssignments function
 TEST(PlannerTest, LoadAssignmentsEmptyFile) {
-    // Create empty JSON file for testing
+    // Empty Json File
     std::string username = "emptyUser";
-    nlohmann::json data = nlohmann::json::array(); // Empty array (no assignments)
+    nlohmann::json data = nlohmann::json::array(); // empty array (no assignments)
     createMockJSONFile(username, data);
 
     std::vector<SchoolWork::Assignment> assignments;
-    ASSERT_FALSE(loadAssignments(username, assignments));  // Should return false for empty data
+    ASSERT_FALSE(loadAssignments(username, assignments));  // the output should be FALSE as there are no assgiments
 }
 
-// Test loadAssignments with valid assignments
+// testing for loadAssignments with valid assignments
 TEST(PlannerTest, LoadAssignmentsValidFile) {
     std::string username = "testUser";
     nlohmann::json data1 = nlohmann::json::array({
@@ -36,27 +36,27 @@ TEST(PlannerTest, LoadAssignmentsValidFile) {
     createMockJSONFile(username, data1);
 
     std::vector<SchoolWork::Assignment> assignments;
-    ASSERT_TRUE(loadAssignments(username, assignments));  // Should return true for valid data
-    ASSERT_EQ(assignments.size(), 2);  // Two assignments should be loaded
+    ASSERT_TRUE(loadAssignments(username, assignments));  // should return TRUE
+    ASSERT_EQ(assignments.size(), 2);  // two assigments loaded
 }
 
-// Test priority calculation function
+// testing the priority calculation function
 TEST(PlannerTest, CalculatePriorityTest) {
-    // Create sample assignments
+    // sample assigments
     SchoolWork::Assignment assignment1("Math", "Math", 5, 10, 20.0, SchoolWork::AssignmentSize::MEDIUM);
     SchoolWork::Assignment assignment2("Science", "Science", 2, 8, 30.0, SchoolWork::AssignmentSize::LONG);
 
     std::vector<SchoolWork::Assignment> assignments = {assignment1, assignment2};
     
-    // Test priority calculation
+    // testing priority calculation
     double priority1 = calculatePriority(assignment1, assignments);
     double priority2 = calculatePriority(assignment2, assignments);
 
-    // Expect assignment2 to have higher priority because of a shorter deadline
+    // THE OUTPUT SHOULD: assignment2 should have higher priority (shorter deadline) 
     ASSERT_GT(priority2, priority1);
 }
 
-// Test the planWorkWeek function (edge case)
+// testing the planWorkWeek function (edge case)
 TEST(PlannerTest, PlanWorkWeekEmptyAssignments) {
     std::vector<SchoolWork::Assignment> assignments;
     int maxDailyHours = 5;
@@ -66,15 +66,15 @@ TEST(PlannerTest, PlanWorkWeekEmptyAssignments) {
     planWorkWeek(assignments, maxDailyHours);
     std::string output = testing::internal::GetCapturedStdout();
 
-    // Expect output message for empty assignments
+    // expect output message for empty assignments
     ASSERT_NE(output.find("All assignments have been scheduled successfully."), std::string::npos);
 }
 
-// Test scheduling an assignment that is due in 5 months (approximately 150 days)
+// EDGE CASE: testing scheduling an assignment that is due in 5 months (approximately 150 days)
 TEST(PlannerTest, PlanWorkWeekAssignmentDueIn5Months) {
     std::vector<SchoolWork::Assignment> assignments;
 
-    // Create an assignment that is due in 150 days (5 months)
+    // creating the assigment
     SchoolWork::Assignment assignment(
         "Long-Term Project",   // name
         "Software Engineering", // course
@@ -87,16 +87,16 @@ TEST(PlannerTest, PlanWorkWeekAssignmentDueIn5Months) {
 
     int maxDailyHours = 5;
 
-    // Capture output
+    // grabs output
     testing::internal::CaptureStdout();
     planWorkWeek(assignments, maxDailyHours);
     std::string output = testing::internal::GetCapturedStdout();
 
-    // Verify that the assignment is scheduled properly (this is an example of how the output can be checked)
+    // checking if it is scheduling the assigment 
     ASSERT_NE(output.find("Long-Term Project"), std::string::npos);
     ASSERT_NE(output.find("Work on Long-Term Project"), std::string::npos);
 
-    // Verify that the scheduling is completed
+    // verfting it has been schedueld 
     ASSERT_NE(output.find("All assignments have been scheduled successfully."), std::string::npos);
 }
 
