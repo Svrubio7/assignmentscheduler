@@ -1,0 +1,10 @@
+[
+    {
+        "course": "Computer programming 2",
+        "deadline": 5,
+        "estimatedHours": 17,
+        "gradeWeight": 20.0,
+        "name": "C++ Individual Assignment",
+        "size": "Long"
+    }
+]
