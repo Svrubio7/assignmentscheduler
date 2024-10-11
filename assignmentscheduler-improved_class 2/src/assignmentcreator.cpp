@@ -4,6 +4,7 @@
 #include <iostream>
 #include <fstream>
 #include <filesystem>
+#include <algorithm>
 #include "Assignment.hpp"
 #include "json.hpp" 
 #include "assignmentcreator.hpp"
