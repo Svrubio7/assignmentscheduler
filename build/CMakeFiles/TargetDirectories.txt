@@ -1,0 +1,4 @@
+/Users/triniroca/Documents/assignmentscheduler-main 2/assignmentscheduler-improved_1/build/CMakeFiles/runTests.dir
+/Users/triniroca/Documents/assignmentscheduler-main 2/assignmentscheduler-improved_1/build/CMakeFiles/main_program.dir
+/Users/triniroca/Documents/assignmentscheduler-main 2/assignmentscheduler-improved_1/build/CMakeFiles/edit_cache.dir
+/Users/triniroca/Documents/assignmentscheduler-main 2/assignmentscheduler-improved_1/build/CMakeFiles/rebuild_cache.dir
