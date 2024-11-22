@@ -1,0 +1,10 @@
+[
+    {
+        "course": "math1",
+        "deadline": 20,
+        "estimatedHours": 30,
+        "gradeWeight": 20.0,
+        "name": "math",
+        "size": "Medium"
+    }
+]
