@@ -36,7 +36,7 @@ int main() {
     std::cin >> maxDailyHours;
 
     planWorkWeek(assignments, maxDailyHours);  // Plan the workweek
-
+    displaySchedule(assignments, maxDailyHours);  // Display final schedule
 
     return 0;
 }
